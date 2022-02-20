@@ -1,6 +1,7 @@
 from flask import Flask
 from markupsafe import escape
 from flask import url_for
+from flask import request
 
 app = Flask(__name__)
 
@@ -23,10 +24,14 @@ def show_post(post_id):
     return f"Post {post_id}"
 
 
-# Using url_for 
-@app.route('/login')
+# Using url_for (reverse url building) and request (http methods)
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return 'login'
+    # if request.method == "POST":
+    #     return handle_login()
+    # else:
+    #     return show_login_form()
+    pass 
 
 @app.route("/new-user/<new_user>")
 def new_user(new_user):
